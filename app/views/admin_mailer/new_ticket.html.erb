@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @ticket.title %></h1>
+    <p>
+      <%= @ticket.message %>
+    </p>
+    <p>
+      Click <a href="<%= admin_ticket_url(@ticket) %>">here</a> for details.
+    </p>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<h2 class="h4 mb-3">My Tickets</h2>
+
+<%= search_form_for @q, url: root_path, html: { class: "form-inline mb-3" } do |f| %>
+  <%= f.search_field :title_cont, class: 'form-control form-control-sm mb-2 mr-sm-2', placeholder: "Title" %>
+  <%= f.select :category_id_eq, options_from_collection_for_select(Category.all, "id", "name", @q.category_id_eq), { include_blank: "Category" }, { class: 'form-control form-control-sm mb-2 mr-sm-2' } %>
+  <%= f.select :status_eq, Ticket.statuses.collect {|s| [ s.first, s.last ] }, { include_blank: "Status" }, { class: 'form-control form-control-sm mb-2 mr-sm-2' } %>
+  <%= f.submit 'Search', class: 'btn btn-sm btn-primary mb-2' %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= link_to ticket.title, ticket_path(ticket.id) %></td>
+        <td><%= ticket.category.name %></td>
+        <td><span class="badge badge-<%= status_class_for(ticket.status) %>"><%= ticket.status %></span></td>
+        <td class="text-right"><%= link_to "View", ticket_path(ticket.id), class: "btn btn-sm btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @tickets, theme: 'twitter-bootstrap-4' %>

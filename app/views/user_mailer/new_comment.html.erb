@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New comment on ticket <b><%= @ticket.title %></b></h1>
+    <p>
+      <%= @comment.message %>
+    </p>
+    <p>
+      Click <a href="<%= ticket_url(@ticket) %>">here</a> to view your ticket.
+    </p>
+  </body>
+</html>
