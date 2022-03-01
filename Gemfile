@@ -47,7 +47,7 @@ gem 'kaminari', '~> 1.2'
 gem 'bootstrap4-kaminari-views', '~> 1.0', '>= 1.0.1'
 
 # High-level wrapper for processing images for the web with ImageMagick or libvips.
-gem 'image_processing', '~> 1.10', '>= 1.10.3'
+gem 'image_processing', '~> 1.12'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
